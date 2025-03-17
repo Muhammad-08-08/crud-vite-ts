@@ -6,3 +6,9 @@ export type StudentsType = {
   active: boolean;
   id: number;
 };
+
+export type GroupType = {
+  id: number;
+  active: boolean;
+  group: string;
+};

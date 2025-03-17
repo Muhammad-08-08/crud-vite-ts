@@ -1,10 +1,10 @@
 import { create } from "zustand";
-import { StudentsType } from "../components/User.Type";
+import { GroupType, StudentsType } from "../components/User.Type";
 import getRandomId from "../components/RandomId";
 
 export type StoreType = {
   students: StudentsType[];
-  group?: any[];
+  group: GroupType[];
 };
 
 const useGlobalStore = create<StoreType>(() => {
@@ -17,6 +17,13 @@ const useGlobalStore = create<StoreType>(() => {
         firstName: "Anvar",
         gender: "male",
         lastName: "Aliyev",
+      },
+    ],
+    group: [
+      {
+        id: getRandomId(),
+        active: true,
+        group: "N12",
       },
     ],
   };

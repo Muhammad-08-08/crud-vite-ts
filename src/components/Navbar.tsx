@@ -20,7 +20,7 @@ function Navbar({ toggleCollapsed, collapsed }: any) {
           />
         </div>
         <div>
-          <h2 className="text-lg font-mono">Jon Doe</h2>
+          <h2 className="text-lg font-mono">John Doe</h2>
           <FcRating size={16} />
         </div>
       </div>

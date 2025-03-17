@@ -1,12 +1,10 @@
 import { Button, Drawer, Form, Input, Radio, Switch } from "antd";
 import { useForm } from "antd/es/form/Form";
-import { useState } from "react";
 import useGlobalStore from "../store/my-store";
 import getRandomId from "./RandomId";
 
-function AddForm({ editItem }: any) {
+function StudentAddForm({ editItem, isOpen, setIsOpen }: any) {
   const students = useGlobalStore((state) => state.students);
-  const [isOpen, setIsOpen] = useState(false);
   const [form] = useForm();
 
   return (
@@ -114,4 +112,4 @@ function AddForm({ editItem }: any) {
     </div>
   );
 }
-export default AddForm;
+export default StudentAddForm;

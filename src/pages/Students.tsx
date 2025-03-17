@@ -1,6 +1,6 @@
 import { Button, Switch, Table } from "antd";
 import useGlobalStore from "../store/my-store";
-import AddForm from "../components/AddForm";
+import StudentAddForm from "../components/StudentAddForm";
 import { FaTrash } from "react-icons/fa";
 import { FiEdit } from "react-icons/fi";
 import { useState } from "react";
@@ -9,6 +9,7 @@ import { StudentsType } from "../components/User.Type";
 function Students() {
   const students = useGlobalStore((state) => state.students);
   const [selectedUser, setSelectedUser] = useState<StudentsType>();
+  const [isOpen, setisOpen] = useState<boolean>(false);
 
   function onRemove(id: any) {
     const remove = students.filter((item) => item.id !== id);
@@ -19,7 +20,11 @@ function Students() {
 
   return (
     <div className="w-full mx-auto px-6">
-      <AddForm editItem={selectedUser} />
+      <StudentAddForm
+        editItem={selectedUser}
+        isOpen={isOpen}
+        setIsOpen={setisOpen}
+      />
 
       <div className="flex gap-4">
         <Button type="primary">Umumiy: {students.length}</Button>
@@ -89,6 +94,7 @@ function Students() {
                   <Button
                     onClick={() => {
                       setSelectedUser(edit);
+                      setisOpen(true);
                     }}
                   >
                     <FiEdit size={14} className="text-green-600" />

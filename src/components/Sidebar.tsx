@@ -7,7 +7,7 @@ function Sidebar({ collapsed }: any) {
   const location = useLocation();
   const navigation = useNavigate();
   return (
-    <div className="w-max">
+    <div className="w-max select-none">
       <Menu
         style={{
           height: "100vh",
