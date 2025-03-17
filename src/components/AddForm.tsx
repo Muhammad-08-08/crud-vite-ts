@@ -4,7 +4,7 @@ import { useState } from "react";
 import useGlobalStore from "../store/my-store";
 import getRandomId from "./RandomId";
 
-function AddForm() {
+function AddForm({ editItem }: any) {
   const students = useGlobalStore((state) => state.students);
   const [isOpen, setIsOpen] = useState(false);
   const [form] = useForm();
@@ -29,6 +29,7 @@ function AddForm() {
         }}
       >
         <Form
+          initialValues={editItem}
           form={form}
           layout="vertical"
           onFinish={(values) => {

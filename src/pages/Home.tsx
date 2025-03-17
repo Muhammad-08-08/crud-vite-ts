@@ -1,11 +1,5 @@
-import Students from "./Students";
-
 function Home() {
-  return (
-    <div>
-      <Students />
-    </div>
-  );
+  return <div>Home</div>;
 }
 
 export default Home;

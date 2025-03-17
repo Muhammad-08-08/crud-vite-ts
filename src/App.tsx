@@ -1,14 +1,22 @@
-import { Route, Routes } from "react-router";
-import Home from "./pages/Home";
 import Navbar from "./components/Navbar";
+import { useState } from "react";
+import Sidebar from "./components/Sidebar";
+import Main from "./components/Main";
 
 function App() {
+  const [collapsed, setCollapsed] = useState(false);
+
+  const toggleCollapsed = () => {
+    setCollapsed(!collapsed);
+  };
+
   return (
     <div>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-      </Routes>
+      <Navbar collapsed={collapsed} toggleCollapsed={toggleCollapsed} />
+      <div className="flex gap-2">
+        <Sidebar />
+        <Main />
+      </div>
     </div>
   );
 }
