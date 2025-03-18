@@ -8,8 +8,8 @@ import { StudentsType } from "../components/User.Type";
 
 function Students() {
   const students = useGlobalStore((state) => state.students);
-  const [selectedUser, setSelectedUser] = useState<StudentsType>();
-  const [isOpen, setisOpen] = useState<boolean>(false);
+  const [selectedUser, setSelectedUser] = useState<StudentsType | null>(null);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
 
   function onRemove(id: any) {
     const remove = students.filter((item) => item.id !== id);
@@ -23,7 +23,10 @@ function Students() {
       <StudentAddForm
         editItem={selectedUser}
         isOpen={isOpen}
-        setIsOpen={setisOpen}
+        setIsOpen={(open: boolean) => {
+          if (!open) setSelectedUser(null);
+          setIsOpen(open);
+        }}
       />
 
       <div className="flex gap-4">
@@ -65,18 +68,12 @@ function Students() {
                 <Switch
                   checked={value}
                   onChange={(change) => {
-                    const new_arr = students.map((item) => {
-                      if (item.id === student.id) {
-                        return {
-                          ...item,
-                          active: change,
-                        };
-                      }
-                      return item;
-                    });
-                    useGlobalStore.setState({
-                      students: new_arr,
-                    });
+                    const new_arr = students.map((item) =>
+                      item.id === student.id
+                        ? { ...item, active: change }
+                        : item
+                    );
+                    useGlobalStore.setState({ students: new_arr });
                   }}
                 />
               );
@@ -94,7 +91,7 @@ function Students() {
                   <Button
                     onClick={() => {
                       setSelectedUser(edit);
-                      setisOpen(true);
+                      setIsOpen(true);
                     }}
                   >
                     <FiEdit size={14} className="text-green-600" />
