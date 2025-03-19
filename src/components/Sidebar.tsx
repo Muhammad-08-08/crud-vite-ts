@@ -1,5 +1,10 @@
-import { GroupOutlined, HomeOutlined } from "@ant-design/icons";
+import {
+  GroupOutlined,
+  HomeOutlined,
+  ProductOutlined,
+} from "@ant-design/icons";
 import { Menu } from "antd";
+import { BiCategory } from "react-icons/bi";
 import { PiStudentFill } from "react-icons/pi";
 import { useLocation, useNavigate } from "react-router";
 
@@ -40,6 +45,22 @@ function Sidebar({ collapsed }: any) {
             icon: <GroupOutlined />,
             onClick: () => {
               navigation("/groups");
+            },
+          },
+          {
+            key: "/mahsulotlar",
+            label: "Mahsulotlar",
+            icon: <ProductOutlined />,
+            onClick: () => {
+              navigation("/mahsulotlar");
+            },
+          },
+          {
+            key: "/categories",
+            label: "Categories",
+            icon: <BiCategory />,
+            onClick: () => {
+              navigation("/categories");
             },
           },
         ]}

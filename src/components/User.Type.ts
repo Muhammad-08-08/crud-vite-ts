@@ -12,3 +12,8 @@ export type GroupType = {
   active: boolean;
   group: string;
 };
+
+export type Mahsulotlar = {
+  image: string;
+  name: string;
+};

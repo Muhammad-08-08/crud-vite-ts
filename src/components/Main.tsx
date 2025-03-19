@@ -2,6 +2,8 @@ import { Route, Routes } from "react-router";
 import Home from "../pages/Home";
 import Students from "../pages/Students";
 import Groups from "../pages/Groups";
+import Mahsulotlar from "../pages/Mahsulotlar";
+import Categories from "../pages/Categories";
 
 function Main() {
   return (
@@ -10,6 +12,8 @@ function Main() {
         <Route path="/" element={<Home />} />
         <Route path="/student" element={<Students />} />
         <Route path="/groups" element={<Groups />} />
+        <Route path="/mahsulotlar" element={<Mahsulotlar />} />
+        <Route path="/categories" element={<Categories />} />
       </Routes>
     </div>
   );

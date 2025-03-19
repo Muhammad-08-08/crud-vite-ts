@@ -1,10 +1,11 @@
 import { create } from "zustand";
-import { GroupType, StudentsType } from "../components/User.Type";
+import { GroupType, Mahsulotlar, StudentsType } from "../components/User.Type";
 import getRandomId from "../components/RandomId";
 
 export type StoreType = {
   students: StudentsType[];
   group: GroupType[];
+  mahsulotlar: Mahsulotlar[];
 };
 
 const useGlobalStore = create<StoreType>(() => {
@@ -24,6 +25,13 @@ const useGlobalStore = create<StoreType>(() => {
         id: getRandomId(),
         active: true,
         group: "N12",
+      },
+    ],
+    mahsulotlar: [
+      {
+        image:
+          "https://cdn.britannica.com/45/126445-050-4C0FA9F6/Kiwi-fruit.jpg",
+        name: "Kiwi",
       },
     ],
   };
