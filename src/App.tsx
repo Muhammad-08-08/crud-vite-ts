@@ -4,7 +4,7 @@ import Sidebar from "./components/Sidebar";
 import Main from "./components/Main";
 
 function App() {
-  const [collapsed, setCollapsed] = useState(false);
+  const [collapsed, setCollapsed] = useState<boolean>(false);
 
   const toggleCollapsed = () => {
     setCollapsed(!collapsed);

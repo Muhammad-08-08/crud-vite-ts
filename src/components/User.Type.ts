@@ -16,6 +16,7 @@ export type GroupType = {
 export type Mahsulotlar = {
   image: string;
   name: string;
+  active: boolean;
 };
 
 export type BuyurtmalarType = {
