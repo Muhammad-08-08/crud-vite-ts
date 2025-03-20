@@ -24,3 +24,9 @@ export type BuyurtmalarType = {
   active: boolean;
   id: number;
 };
+
+export type CategoriesType = {
+  name: string;
+  active: boolean;
+  id: number;
+};

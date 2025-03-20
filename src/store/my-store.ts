@@ -1,6 +1,7 @@
 import { create } from "zustand";
 import {
   BuyurtmalarType,
+  CategoriesType,
   GroupType,
   Mahsulotlar,
   StudentsType,
@@ -12,6 +13,7 @@ export type StoreType = {
   group: GroupType[];
   mahsulotlar: Mahsulotlar[];
   buyurtmalar: BuyurtmalarType[];
+  categories: CategoriesType[];
 };
 
 const useGlobalStore = create<StoreType>(() => {
@@ -45,6 +47,13 @@ const useGlobalStore = create<StoreType>(() => {
       {
         product: "olma",
         student: "Muhammad",
+        active: true,
+        id: getRandomId(),
+      },
+    ],
+    categories: [
+      {
+        name: "olma",
         active: true,
         id: getRandomId(),
       },
