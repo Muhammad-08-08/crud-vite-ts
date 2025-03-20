@@ -63,6 +63,12 @@ function Students() {
           {
             title: "guruh",
             dataIndex: "guruh",
+            render: (guruhId) => {
+              const guruh = useGlobalStore
+                .getState()
+                .group.find((g) => g.id === guruhId);
+              return guruh ? guruh.group : "Noma'lum";
+            },
           },
           {
             title: "Active",

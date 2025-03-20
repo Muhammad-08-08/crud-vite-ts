@@ -17,6 +17,7 @@ export type StoreType = {
 };
 
 const useGlobalStore = create<StoreType>(() => {
+  const groupId = getRandomId();
   return {
     students: [
       {
@@ -26,12 +27,12 @@ const useGlobalStore = create<StoreType>(() => {
         firstName: "Anvar",
         gender: "male",
         lastName: "Aliyev",
-        guruh: "N12",
+        guruh: groupId,
       },
     ],
     group: [
       {
-        id: getRandomId(),
+        id: groupId,
         active: true,
         group: "N12",
       },
