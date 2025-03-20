@@ -26,6 +26,7 @@ const useGlobalStore = create<StoreType>(() => {
         firstName: "Anvar",
         gender: "male",
         lastName: "Aliyev",
+        guruh: "N12",
       },
     ],
     group: [
@@ -53,7 +54,7 @@ const useGlobalStore = create<StoreType>(() => {
     ],
     categories: [
       {
-        name: "olma",
+        name: "telefonlar",
         active: true,
         id: getRandomId(),
       },

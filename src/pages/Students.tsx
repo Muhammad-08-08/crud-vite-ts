@@ -29,7 +29,7 @@ function Students() {
         }}
       />
 
-      <div className="flex gap-4">
+      <div className="flex gap-4 mb-4">
         <Button type="primary">Umumiy: {students.length}</Button>
         <Button type="primary">
           Faollar: {students.filter((item) => item.active).length}

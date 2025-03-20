@@ -11,7 +11,7 @@ function Groups() {
     <div className="w-full mx-auto px-6">
       <GroupAddForm isOpen={isOpen} setIsOpen={setisOpen} />
 
-      <div className="flex gap-4">
+      <div className="flex gap-4 mb-4">
         <Button type="primary">Umumiy: {groups.length}</Button>
         <Button type="primary">
           Faollar: {groups.filter((item) => item.active).length}

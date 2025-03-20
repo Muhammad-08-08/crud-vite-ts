@@ -3,21 +3,21 @@ import { useState } from "react";
 import BuyurtmalarimAddForm from "../components/BuyurtmalarimAddForm";
 import useGlobalStore from "../store/my-store";
 
-function Groups() {
-  const groups = useGlobalStore((state) => state.buyurtmalar);
+function Buyurtmalarim() {
+  const buyurtma = useGlobalStore((state) => state.buyurtmalar);
   const [isOpen, setisOpen] = useState<boolean>(false);
 
   return (
     <div className="w-full mx-auto px-6">
       <BuyurtmalarimAddForm isOpen={isOpen} setIsOpen={setisOpen} />
 
-      <div className="flex gap-4">
-        <Button type="primary">Umumiy: {groups.length}</Button>
+      <div className="flex gap-4 mb-4">
+        <Button type="primary">Umumiy: {buyurtma.length}</Button>
         <Button type="primary">
-          Faollar: {groups.filter((item) => item.active).length}
+          Faollar: {buyurtma.filter((item) => item.active).length}
         </Button>
         <Button type="primary">
-          Bloklanganlar: {groups.filter((item) => !item.active).length}
+          Bloklanganlar: {buyurtma.filter((item) => !item.active).length}
         </Button>
       </div>
       <Table
@@ -42,7 +42,7 @@ function Groups() {
                 <Switch
                   checked={value}
                   onChange={(change) => {
-                    const new_arr = groups.map((item) => {
+                    const new_arr = buyurtma.map((item) => {
                       if (item.id === group.id) {
                         return {
                           ...item,
@@ -60,11 +60,11 @@ function Groups() {
             },
           },
         ]}
-        dataSource={groups}
+        dataSource={buyurtma}
         rowKey={"id"}
       />
     </div>
   );
 }
 
-export default Groups;
+export default Buyurtmalarim;

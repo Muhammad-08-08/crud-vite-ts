@@ -11,7 +11,7 @@ function Mahsulotlar() {
     <div className="w-full mx-auto px-6">
       <MahsulotAddForm isOpen={isOpen} setIsOpen={setIsOpen} />
 
-      <div className="flex gap-4 mb-5">
+      <div className="flex gap-4 mb-4">
         <Button type="primary">Umumiy: {mahsulotlar.length}</Button>
         <Button type="primary">
           Faollar: {mahsulotlar.filter((item) => item.active).length}

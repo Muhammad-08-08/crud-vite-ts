@@ -4,6 +4,7 @@ export type StudentsType = {
   age: number;
   gender: "male" | "female";
   active: boolean;
+  guruh: string;
   id: number;
 };
 

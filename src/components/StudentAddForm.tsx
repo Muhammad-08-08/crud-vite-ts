@@ -1,4 +1,4 @@
-import { Button, Drawer, Form, Input, Radio, Switch } from "antd";
+import { Button, Drawer, Form, Input, Radio, Select, Switch } from "antd";
 import { useForm } from "antd/es/form/Form";
 import { useEffect } from "react";
 import useGlobalStore from "../store/my-store";
@@ -6,6 +6,7 @@ import getRandomId from "./RandomId";
 
 function StudentAddForm({ editItem, isOpen, setIsOpen }: any) {
   const students = useGlobalStore((state) => state.students);
+  const group = useGlobalStore((state) => state.group);
   const [form] = useForm();
 
   useEffect(() => {
@@ -70,6 +71,14 @@ function StudentAddForm({ editItem, isOpen, setIsOpen }: any) {
           </Form.Item>
           <Form.Item label="Faolligi" name="active" valuePropName="checked">
             <Switch />
+          </Form.Item>
+          <Form.Item label="Guruh" name="guruh">
+            <Select
+              options={group.map((g) => ({
+                value: g.id,
+                label: g.group,
+              }))}
+            />
           </Form.Item>
           <Form.Item>
             <Button type="primary" htmlType="submit">
