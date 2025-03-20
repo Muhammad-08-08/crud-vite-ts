@@ -61,6 +61,10 @@ function Students() {
             dataIndex: "gender",
           },
           {
+            title: "guruh",
+            dataIndex: "guruh",
+          },
+          {
             title: "Active",
             dataIndex: "active",
             render: (value, student) => {
