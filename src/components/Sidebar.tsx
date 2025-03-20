@@ -1,6 +1,7 @@
 import {
   GroupOutlined,
   HomeOutlined,
+  OrderedListOutlined,
   ProductOutlined,
 } from "@ant-design/icons";
 import { Menu } from "antd";
@@ -33,7 +34,7 @@ function Sidebar({ collapsed }: any) {
           },
           {
             key: "/student",
-            label: "students",
+            label: "Students",
             icon: <PiStudentFill />,
             onClick: () => {
               navigation("/student");
@@ -61,6 +62,14 @@ function Sidebar({ collapsed }: any) {
             icon: <BiCategory />,
             onClick: () => {
               navigation("/categories");
+            },
+          },
+          {
+            key: "/buyurtmalarim",
+            label: "Buyurtmalarim",
+            icon: <OrderedListOutlined />,
+            onClick: () => {
+              navigation("/buyurtmalarim");
             },
           },
         ]}

@@ -3,14 +3,14 @@ import { useForm } from "antd/es/form/Form";
 import useGlobalStore from "../store/my-store";
 import getRandomId from "./RandomId";
 
-function GroupAddForm({ editItem, isOpen, setIsOpen }: any) {
-  const students = useGlobalStore((state) => state.group);
+function BuyurtmalarimAddForm({ editItem, isOpen, setIsOpen }: any) {
+  const students = useGlobalStore((state) => state.buyurtmalar);
   const [form] = useForm();
 
   return (
     <div>
       <div className="flex justify-between px-6 my-6">
-        <h2 className="text-xl font-medium">Guruh qo'shish</h2>
+        <h2 className="text-xl font-medium">Buyurtma qo'shish</h2>
         <Button
           onClick={() => {
             setIsOpen(true);
@@ -36,15 +36,26 @@ function GroupAddForm({ editItem, isOpen, setIsOpen }: any) {
               id: getRandomId(),
             });
             useGlobalStore.setState({
-              group: new_arr,
+              buyurtmalar: new_arr,
             });
             form.resetFields();
             setIsOpen(false);
           }}
         >
           <Form.Item
-            label="Ism"
-            name="group"
+            label="Product"
+            name="product"
+            rules={[
+              {
+                required: true,
+              },
+            ]}
+          >
+            <Input />
+          </Form.Item>
+          <Form.Item
+            label="Student"
+            name="student"
             rules={[
               {
                 required: true,
@@ -67,4 +78,4 @@ function GroupAddForm({ editItem, isOpen, setIsOpen }: any) {
     </div>
   );
 }
-export default GroupAddForm;
+export default BuyurtmalarimAddForm;

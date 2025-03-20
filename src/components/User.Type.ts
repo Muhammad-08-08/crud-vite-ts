@@ -17,3 +17,10 @@ export type Mahsulotlar = {
   image: string;
   name: string;
 };
+
+export type BuyurtmalarType = {
+  product: string;
+  student: string;
+  active: boolean;
+  id: number;
+};

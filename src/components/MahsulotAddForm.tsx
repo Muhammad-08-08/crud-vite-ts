@@ -1,10 +1,10 @@
-import { Button, Drawer, Form, Input, Radio, Switch } from "antd";
+import { Button, Drawer, Form, Input } from "antd";
 import { useForm } from "antd/es/form/Form";
 import useGlobalStore from "../store/my-store";
 import getRandomId from "./RandomId";
 
 function MahsulotAddForm({ editItem, isOpen, setIsOpen }: any) {
-  const students = useGlobalStore((state) => state.students);
+  const students = useGlobalStore((state) => state.mahsulotlar);
   const [form] = useForm();
 
   return (
@@ -36,15 +36,15 @@ function MahsulotAddForm({ editItem, isOpen, setIsOpen }: any) {
               id: getRandomId(),
             });
             useGlobalStore.setState({
-              students: new_arr,
+              mahsulotlar: new_arr,
             });
             form.resetFields();
             setIsOpen(false);
           }}
         >
           <Form.Item
-            label="Ism"
-            name="firstName"
+            label="Image"
+            name="image"
             rules={[
               {
                 required: true,
@@ -54,8 +54,8 @@ function MahsulotAddForm({ editItem, isOpen, setIsOpen }: any) {
             <Input />
           </Form.Item>
           <Form.Item
-            label="Familya"
-            name="lastName"
+            label="Name"
+            name="name"
             rules={[
               {
                 required: true,
@@ -63,44 +63,6 @@ function MahsulotAddForm({ editItem, isOpen, setIsOpen }: any) {
             ]}
           >
             <Input />
-          </Form.Item>
-          <Form.Item
-            label="Yosh"
-            name="age"
-            rules={[
-              {
-                required: true,
-              },
-            ]}
-          >
-            <Input />
-          </Form.Item>
-          <Form.Item
-            label="Jinsi"
-            name="gender"
-            rules={[
-              {
-                required: true,
-              },
-            ]}
-          >
-            <Radio.Group
-              optionType="button"
-              buttonStyle="solid"
-              options={[
-                {
-                  value: "male",
-                  label: "male",
-                },
-                {
-                  value: "female",
-                  label: "female",
-                },
-              ]}
-            />
-          </Form.Item>
-          <Form.Item label="Faolligi" name="active">
-            <Switch />
           </Form.Item>
           <Form.Item>
             <Button color="blue" variant="dashed" htmlType="submit">

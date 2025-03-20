@@ -1,15 +1,15 @@
 import { Button, Switch, Table } from "antd";
 import { useState } from "react";
-import GroupAddForm from "../components/GroupAddForm";
+import BuyurtmalarimAddForm from "../components/BuyurtmalarimAddForm";
 import useGlobalStore from "../store/my-store";
 
 function Groups() {
-  const groups = useGlobalStore((state) => state.group);
+  const groups = useGlobalStore((state) => state.buyurtmalar);
   const [isOpen, setisOpen] = useState<boolean>(false);
 
   return (
     <div className="w-full mx-auto px-6">
-      <GroupAddForm isOpen={isOpen} setIsOpen={setisOpen} />
+      <BuyurtmalarimAddForm isOpen={isOpen} setIsOpen={setisOpen} />
 
       <div className="flex gap-4">
         <Button type="primary">Umumiy: {groups.length}</Button>
@@ -27,8 +27,12 @@ function Groups() {
             dataIndex: "id",
           },
           {
-            title: "Nomi",
-            dataIndex: "group",
+            title: "Student",
+            dataIndex: "student",
+          },
+          {
+            title: "Product",
+            dataIndex: "product",
           },
           {
             title: "Active",
@@ -48,7 +52,7 @@ function Groups() {
                       return item;
                     });
                     useGlobalStore.setState({
-                      group: new_arr,
+                      buyurtmalar: new_arr,
                     });
                   }}
                 />
