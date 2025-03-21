@@ -54,15 +54,17 @@ function Buyurtmalarim() {
             title: "Jami narx",
             dataIndex: "price",
             render: (_, record) => {
-              const product = mahsulotlar.find((item) => String(item.id) === String(record.product));
-          
+              const product = mahsulotlar.find(
+                (item) => String(item.id) === String(record.product)
+              );
+
               const pricePerItem = product?.price ?? 0;
-          
+
               const quantity = record.quantity ?? 1;
-          
+
               return pricePerItem * quantity;
             },
-          },          
+          },
           {
             title: "Active",
             dataIndex: "active",
