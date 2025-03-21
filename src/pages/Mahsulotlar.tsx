@@ -28,6 +28,7 @@ function Mahsulotlar() {
             </div>
             <div>
               <p>{item.name}</p>
+              <p>{item.price} so'm</p>
             </div>
           </Card>
         );

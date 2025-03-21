@@ -18,6 +18,28 @@ export type StoreType = {
 
 const useGlobalStore = create<StoreType>(() => {
   const groupId = getRandomId();
+
+  const mahsulotlar: Mahsulotlar[] = [
+    {
+      image: "https://cdn.britannica.com/45/126445-050-4C0FA9F6/Kiwi-fruit.jpg",
+      name: "Kiwi",
+      active: true,
+      price: 10000,
+      id: groupId,
+    },
+  ];
+
+  const buyurtmalar: BuyurtmalarType[] = [
+    {
+      product: "Kiwi",
+      student: "Muhammad",
+      active: true,
+      quantity: 12,
+      price: 12 * (mahsulotlar.find((m) => m.name === "Kiwi")?.price || 0),
+      id: getRandomId(),
+    },
+  ];
+
   return {
     students: [
       {
@@ -37,22 +59,8 @@ const useGlobalStore = create<StoreType>(() => {
         group: "N12",
       },
     ],
-    mahsulotlar: [
-      {
-        image:
-          "https://cdn.britannica.com/45/126445-050-4C0FA9F6/Kiwi-fruit.jpg",
-        name: "Kiwi",
-        active: true,
-      },
-    ],
-    buyurtmalar: [
-      {
-        product: "olma",
-        student: "Muhammad",
-        active: true,
-        id: getRandomId(),
-      },
-    ],
+    mahsulotlar,
+    buyurtmalar,
     categories: [
       {
         name: "telefonlar",

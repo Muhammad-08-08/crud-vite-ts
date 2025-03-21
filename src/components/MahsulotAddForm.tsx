@@ -1,10 +1,10 @@
-import { Button, Drawer, Form, Input } from "antd";
+import { Button, Drawer, Form, Input, InputNumber } from "antd";
 import { useForm } from "antd/es/form/Form";
 import useGlobalStore from "../store/my-store";
 import getRandomId from "./RandomId";
 
 function MahsulotAddForm({ editItem, isOpen, setIsOpen }: any) {
-  const students = useGlobalStore((state) => state.mahsulotlar);
+  const product = useGlobalStore((state) => state.mahsulotlar);
   const [form] = useForm();
 
   return (
@@ -31,7 +31,7 @@ function MahsulotAddForm({ editItem, isOpen, setIsOpen }: any) {
           form={form}
           layout="vertical"
           onFinish={(values) => {
-            const new_arr = students.concat({
+            const new_arr = product.concat({
               ...values,
               id: getRandomId(),
             });
@@ -63,6 +63,17 @@ function MahsulotAddForm({ editItem, isOpen, setIsOpen }: any) {
             ]}
           >
             <Input />
+          </Form.Item>
+          <Form.Item
+            label="Name"
+            name="price"
+            rules={[
+              {
+                required: true,
+              },
+            ]}
+          >
+            <InputNumber />
           </Form.Item>
           <Form.Item>
             <Button color="blue" variant="dashed" htmlType="submit">

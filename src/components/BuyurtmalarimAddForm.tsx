@@ -1,10 +1,13 @@
-import { Button, Drawer, Form, Input, Switch } from "antd";
+import { Button, Drawer, Form, InputNumber, Select, Switch } from "antd";
 import { useForm } from "antd/es/form/Form";
 import useGlobalStore from "../store/my-store";
 import getRandomId from "./RandomId";
 
 function BuyurtmalarimAddForm({ editItem, isOpen, setIsOpen }: any) {
-  const students = useGlobalStore((state) => state.buyurtmalar);
+  const buyurtmalar = useGlobalStore((state) => state.buyurtmalar);
+  const students = useGlobalStore((state) => state.students);
+  const products = useGlobalStore((state) => state.mahsulotlar);
+
   const [form] = useForm();
 
   return (
@@ -31,13 +34,24 @@ function BuyurtmalarimAddForm({ editItem, isOpen, setIsOpen }: any) {
           form={form}
           layout="vertical"
           onFinish={(values) => {
-            const new_arr = students.concat({
+            const selectedProduct = products.find(
+              (item) => item.id === values.product
+            );
+
+            const totalPrice = selectedProduct
+              ? values.quantity * selectedProduct.price
+              : 0;
+
+            const newOrder = {
               ...values,
               id: getRandomId(),
-            });
+              price: totalPrice, // Jami narx
+            };
+
             useGlobalStore.setState({
-              buyurtmalar: new_arr,
+              buyurtmalar: [...buyurtmalar, newOrder],
             });
+
             form.resetFields();
             setIsOpen(false);
           }}
@@ -45,31 +59,40 @@ function BuyurtmalarimAddForm({ editItem, isOpen, setIsOpen }: any) {
           <Form.Item
             label="Product"
             name="product"
-            rules={[
-              {
-                required: true,
-              },
-            ]}
+            rules={[{ required: true }]}
           >
-            <Input />
+            <Select
+              options={products.map((item) => ({
+                value: item.id,
+                label: item.name,
+              }))}
+            />
           </Form.Item>
           <Form.Item
             label="Student"
             name="student"
-            rules={[
-              {
-                required: true,
-              },
-            ]}
+            rules={[{ required: true }]}
           >
-            <Input />
+            <Select
+              options={students.map((item) => ({
+                value: item.id,
+                label: item.firstName,
+              }))}
+            />
+          </Form.Item>
+          <Form.Item
+            label="Nechta olmoqchisiz?"
+            name="quantity"
+            rules={[{ required: true }]}
+          >
+            <InputNumber min={1} />
           </Form.Item>
 
-          <Form.Item label="Faolligi" name="active">
+          <Form.Item label="Faolligi" name="active" valuePropName="checked">
             <Switch />
           </Form.Item>
           <Form.Item>
-            <Button color="blue" variant="dashed" htmlType="submit">
+            <Button type="primary" htmlType="submit">
               Qo'shish
             </Button>
           </Form.Item>
@@ -78,4 +101,5 @@ function BuyurtmalarimAddForm({ editItem, isOpen, setIsOpen }: any) {
     </div>
   );
 }
+
 export default BuyurtmalarimAddForm;

@@ -17,11 +17,15 @@ export type GroupType = {
 export type Mahsulotlar = {
   image: string;
   name: string;
+  price: number;
   active: boolean;
+  id: number;
 };
 
 export type BuyurtmalarType = {
   product: string;
+  quantity: number;
+  price: number;
   student: string;
   active: boolean;
   id: number;
